@@ -21,4 +21,5 @@ import kjh.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',kjh.views.index, name='index'),
+    path('testdata',kjh.views.getTestdatas),
 ]
