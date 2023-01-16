@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 import kjh.views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',kjh.views.index, name='index'),
+    path('main/', include('kjh.urls')),
 ]
