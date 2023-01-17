@@ -19,9 +19,9 @@ label[for=trigger] {
     /* border: 1px solid red; */
     width: 30px;
     height: 20px;
-    left: 25%;
+    left:25%;
     display: block;
-    position: fixed;
+    position: absolute;
     cursor: pointer;
     z-index: 3;
     transition: 0.3s;
@@ -68,20 +68,11 @@ input[id=trigger]:checked + label span:nth-child(3) {
     transform: rotate(-45deg);
 }
 
-/* 사이드바 */
-.sidebar {
-    width: 23%;
-    height: 100%;
-    position: fixed;
-    left: 2%;
-    z-index: 2;
-    transition: 0.3s;
-}
 
 /* input[id=trigger]가 체크되었을 때 사이드바가 나오는 형제 인접자 */
-input[id=trigger]:checked ~ .sidebar {
-    left: -500px;
+input[id=trigger]:checked ~ .main {
+    left: -25%;
 }
-input[id=trigger]:checked +label span {
-    left: -430px;
+input[id=trigger]:checked + label span {
+    left: -23vw;
 }
