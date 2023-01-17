@@ -85,3 +85,4 @@ input[id=trigger]:checked ~ .sidebar {
 input[id=trigger]:checked +label span {
     left: -430px;
 }
+
