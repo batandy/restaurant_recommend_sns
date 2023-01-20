@@ -40,6 +40,19 @@
         </div>
     </div>
 
+    {% for restaurant in restaurants%}
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type='text/javascript'>
+            var mapDiv = document.getElementById('map');
+            var x = restaurant.x.text();
+            var y = restaurant.y.text();
+            var marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(x,y),
+                map: map
+            });
+        </script>
+    {% endfor %}
+
     <!-- 자바스크립트 시작 -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <!-- {% block script %} -->
