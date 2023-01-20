@@ -9,13 +9,19 @@
 <a>이동한 메인파트입니다.</a>
 <table class="db-contents" style="padding:10px">
     <tr>
+        <th>name</th>
         <th>x</th>
         <th>y</th>
+        <th>ratenum</th>
+        <th>ratetext</th>
     </tr>
     {% for restaurant in restaurants%}
         <tr>
+            <td>{{restaurant.name}}</td>
             <td>{{restaurant.x}}</td>
             <td>{{restaurant.y}}</td>
+            <td>{{restaurant.ratenum}}</td>
+            <td>{{restaurant.ratetext}}</td>
         </tr>
     {% endfor %}
 </table>
