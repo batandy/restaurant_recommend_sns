@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+        nav.sidebar {
+          background-color: #fbbbbc;
+        }
+    </style>
 <a>이동한 메인파트입니다.</a>
+<table class="db-contents" style="padding:10px">
+    <tr>
+        <th>x</th>
+        <th>y</th>
+    </tr>
+    {% for restaurant in restaurants%}
+        <tr>
+            <td>{{restaurant.x}}</td>
+            <td>{{restaurant.y}}</td>
+        </tr>
+    {% endfor %}
+</table>
 {% endblock %}
