@@ -16,7 +16,7 @@
     <div class="container">
         <div class="icons">
             <a id="log" href="{%url 'main:store' %}">login</a>
-            <a id="back" href="{%url 'index' %}">첨으로</a>
+
         </div>
 
         <!-- 햄버거 메뉴 -->
@@ -33,6 +33,15 @@
             {% block content %}
             {% endblock %}
             <!-- 끝 -->
+            {% for restaurant in restaurants%}
+                <tr>
+                    <td>{{restaurant.name}}</td>
+                    <td>{{restaurant.x}}</td>
+                    <td>{{restaurant.y}}</td>
+                    <td>{{restaurant.ratenum}}</td>
+                    <td>{{restaurant.ratetext}}</td>
+                </tr>
+            {% endfor %}
         </div>
 
         <div class="map_posi">
@@ -40,18 +49,7 @@
         </div>
     </div>
 
-    {% for restaurant in restaurants%}
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type='text/javascript'>
-            var mapDiv = document.getElementById('map');
-            var x = restaurant.x.text();
-            var y = restaurant.y.text();
-            var marker = new naver.maps.Marker({
-                position: new naver.maps.LatLng(x,y),
-                map: map
-            });
-        </script>
-    {% endfor %}
+
 
     <!-- 자바스크립트 시작 -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
