@@ -19,24 +19,24 @@
             <a id="back" href="{%url 'index' %}">첨으로</a>
         </div>
 
+        <!-- 햄버거 메뉴 -->
+        <input type="checkbox" id="trigger" >
+        <label for="trigger">
+            <!-- 햄버거 세줄 표현 -->
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <label for="box"></label>
         <div class="main">
-            <!-- 햄버거 메뉴 -->
-            <input type="checkbox" id="trigger" >
-            <label for="trigger">
-                <!-- 햄버거 세줄 표현 -->
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <nav class="sidebar" id="sidebar">
-                <!-- 메인파트내용 -->
-                {% block content %}
-                {% endblock %}
-                <!-- 끝 -->
-            </nav>
+            <!-- 메인파트내용 -->
+            {% block content %}
+            {% endblock %}
+            <!-- 끝 -->
         </div>
+
         <div class="map_posi">
-            <div id="map" style="width:100%;height:100%;"></div>
+            <div id="map"></div>
         </div>
     </div>
 
@@ -57,4 +57,5 @@
     <!-- {% endblock %} -->
     <!-- 자바스크립트 끝 -->
 </body>
+
 </html>
