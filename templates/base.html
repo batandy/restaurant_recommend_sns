@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>navermap</title>
-
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxqxlpqj6o"></script>
+
     <link rel="stylesheet" type="text/css" href="{% static 'floating.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
@@ -16,7 +16,6 @@
     <div class="container">
         <div class="icons">
             <a id="log" href="{%url 'main:store' %}">login</a>
-            <a id="back" href="{%url 'index' %}">첨으로</a>
         </div>
 
         <!-- 햄버거 메뉴 -->
@@ -40,33 +39,11 @@
         </div>
     </div>
 
-    {% for restaurant in restaurants%}
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type='text/javascript'>
-            var mapDiv = document.getElementById('map');
-            var x = restaurant.x.text();
-            var y = restaurant.y.text();
-            var marker = new naver.maps.Marker({
-                position: new naver.maps.LatLng(x,y),
-                map: map
-            });
-        </script>
-    {% endfor %}
-
+    
     <!-- 자바스크립트 시작 -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{% static 'basic.js' %}"></script>
     <!-- {% block script %} -->
-    <script type='text/javascript'>
-        var mapDiv = document.getElementById('map');
-        var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(37.3595704, 127.105399),
-            zoom: 10
-        });
-        var marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(37.3595704, 127.105399),
-            map: map
-        });
-    </script>
     <!-- {% endblock %} -->
     <!-- 자바스크립트 끝 -->
 </body>
