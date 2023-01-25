@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>navermap</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxqxlpqj6o"></script>
-
     <link rel="stylesheet" type="text/css" href="{% static 'floating.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
@@ -15,7 +14,8 @@
 <body>
     <div class="container">
         <div class="icons">
-            <a id="log" href="{%url 'main:store' %}">login</a>
+            <a class="nav-link" href="{%url 'main:login' %}">login</a>
+            
         </div>
 
         <!-- 햄버거 메뉴 -->
@@ -47,5 +47,4 @@
     <!-- {% endblock %} -->
     <!-- 자바스크립트 끝 -->
 </body>
-
 </html>
