@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>navermap</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxqxlpqj6o"></script>
+
     <link rel="stylesheet" type="text/css" href="{% static 'floating.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
@@ -14,8 +15,7 @@
 <body>
     <div class="container">
         <div class="icons">
-            <a class="nav-link" href="{%url 'main:login' %}">login</a>
-            
+            <a id="log" href="{%url 'main:login' %}">login</a>
         </div>
 
         <!-- 햄버거 메뉴 -->
@@ -41,10 +41,62 @@
 
     
     <!-- 자바스크립트 시작 -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+
+        var db = "{{restaurant_db}}";
+        var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
+        var test_data=locations
+        console.log(locations,test_data)
+        for(i in test_data){
+            console.log(test_data[i])
+        }
+        $.ajax({
+            url:"{% url 'getdata'%}",
+            dataType: "json",
+            success: function (data) {
+                var apiTest = "";
+                console.log(data)
+                for (var i = 0; i < data.length; i++) {
+                    apiTest += "<tr>"
+                    apiTest += "<td>" + data[i].fields.x + "</td>"
+                    apiTest += "<td>" + data[i].fields.y + "</td>"
+                    apiTest += "<td>" + data[i].fields.name + "</td>"
+                    apiTest += "</tr>"
+                }
+            },
+            error: function (request, status, error) {
+                console.log('실패');
+            }
+        });
+    </script>
+    <script type="text/javascript">
+
+
+    </script>
+
     <script src="{% static 'basic.js' %}"></script>
     <!-- {% block script %} -->
     <!-- {% endblock %} -->
     <!-- 자바스크립트 끝 -->
 </body>
+<table class="json" style="padding:10px">
+    <tr>
+        <th>name</th>
+        <th>x</th>
+        <th>y</th>
+        <th>ratenum</th>
+        <th>ratetext</th>
+    </tr>
+    {% for restaurant in restaurant_db%}
+        <tr>
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.x}}</td>
+            <td>{{restaurant.y}}</td>
+            <td>{{restaurant.ratenum}}</td>
+            <td>{{restaurant.ratetext}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
 </html>
