@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>navermap</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxqxlpqj6o"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxqxlpqj6o&submodules=geocoder"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'floating.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
@@ -27,24 +27,51 @@
             <span></span>
         </label>
         <label for="box"></label>
-        <div class="main">
+
+        <div class="top_space" id="top_space">
+            <form id="search_form">
+                <input name="search_res" type="text" placeholder="장소, 가게명 검색" required">
+            </form>
+            
+            <div id="weather" style="left:4%;position:fixed;">
+                <h3 id="weatherLocate" style="position:fixed; top:5.5vh;"></h3>
+                <button id="locateModify" style="position:fixed; top:7.5vh;left:20%;">위치수정</button>
+                <img id="weatherIcon" style="position:fixed; top:7.5vh;">
+                <h4 id="weatherData" style="position:fixed; top:9.5vh; left:10%;"></h4>
+            </div>
+            <style>
+                input{
+                    width: 90%;
+                    height: 35px;
+                    font-size: 15px;
+                    position: relative;
+                    top: 2vh;
+                    left:4%;
+                }
+                div.weather{
+                    position: relative;
+                }
+            </style>
+        </div>
+
+        <div class="main" id="main">
             <!-- 메인파트내용 -->
             {% block content %}
             {% endblock %}
             <!-- 끝 -->
         </div>
 
-        <div class="map_posi">
+        <div class="map_posi" id="map_posi">
             <div id="map"></div>
         </div>
     </div>
 
     
     <!-- 자바스크립트 시작 -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="{% static 'basic.js' %}"></script>
-    <!-- {% block script %} -->
-    <!-- {% endblock %} -->
+    {% block script %}
+    {% endblock %}
     <!-- 자바스크립트 끝 -->
 </body>
 </html>

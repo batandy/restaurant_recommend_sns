@@ -6,7 +6,9 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return render(request,"main.html")
+    search_text=request.GET.get('search_res')
+    context={'search_text':search_text}
+    return render(request,"main.html", context)
 
 
 def store(request):

@@ -1,5 +1,5 @@
 div{
-    height: 100vh;
+    height: 100%;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -15,6 +15,7 @@ div.map_posi{
     left: 0;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
     
 div.icons{
@@ -23,23 +24,43 @@ div.icons{
     z-index:3;
     top: 0;
     left: 0;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     height: 100vh;
+    overflow: hidden;
+    border-right: solid 1px rgb(217, 217, 217);
 }
-    
-div.main{
+
+div.top_space{
     width: 21%;
     position: absolute;
-    z-index: 2;
+    z-index: 4;
     top: 0;
     left: 3%;
     transition: 0.3s;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    height: 100vh;
-    overflow: auto;
+    height: 18vh;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-bottom: solid 1px rgb(217, 217, 217);
 }
+    
+div.main{
+    width: 21%;
+    position: absolute;
+    z-index: 2;
+    top: 18vh;
+    left: 3%;
+    transition: 0.3s;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 82vh;
+    overflow: auto;
+    background-color: #ffffff;
+}
+
