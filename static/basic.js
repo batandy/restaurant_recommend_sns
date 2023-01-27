@@ -39,15 +39,19 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
 function onGeoSuccess(position){
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
-
+    sessionStorage.setItem("location", JSON.stringify({ lat, lng }));
     getLocate(lat,lng);
-    
 };
 function onGeoError(){
     alert("Can't find you. No locate for you.")
 };
 
-navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+if(sessionStorage.getItem("location")){
+    const location = JSON.parse(sessionStorage.getItem("location"));
+    getLocate(location.lat, location.lng);
+}else{
+    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+}
 
 
 document.getElementById("locateModify").addEventListener("click", function(){  //지역수정
@@ -64,6 +68,7 @@ document.getElementById("locateModify").addEventListener("click", function(){  /
             return alert("주소를 잘못 입력하셨습니다. 다시 입력해주세요");
         const lng = parseFloat(items[0].point.x);
         const lat = parseFloat(items[0].point.y);
+        sessionStorage.setItem("location", JSON.stringify({ lat, lng }));
         getLocate(lat,lng);
     });
 });
