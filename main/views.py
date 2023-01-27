@@ -12,7 +12,7 @@ def index(request):
     context={'search_text':search_text}
     restaurant_db = serializers.serialize("json", restaurants.objects.all())
     print(restaurant_db)
-    # return render(request,"main.html", context)
+    return render(request,"main.html", context)
     return render(request,"base.html",{'restaurant_db':restaurant_db})
 
 
