@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>navermap</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxqxlpqj6o"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxqxlpqj6o&submodules=geocoder"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'floating.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
@@ -15,7 +14,11 @@
 <body>
     <div class="container">
         <div class="icons">
-            <a id="log" href="{%url 'main:login' %}">login</a>
+            {% if user.is_authenticated %}
+            <a class = "login-link" href="{%url 'main:logout' %}">logout</a>
+            {% else %}
+            <a class = "login-link" href="{%url 'main:login' %}">login</a>
+            {% endif %}
         </div>
 
         <!-- 햄버거 메뉴 -->
@@ -27,25 +30,50 @@
             <span></span>
         </label>
         <label for="box"></label>
-        <div class="main">
+
+        <div class="top_space" id="top_space">
+            <form id="search_form">
+                <input name="search_res" type="text" placeholder="장소, 가게명 검색" required">
+            </form>
+            
+            <div id="weather" style="left:4%;position:relative;">
+                <h3 id="weatherLocate" style="position:relative; top:1vh;"></h3>
+                <button id="locateModify" style="position:absolute; top:3.1vh; left:33vh;">위치수정</button>
+                <img id="weatherIcon" style="position:relative; top:-3vh; left:-2.2vh;">
+                <h4 id="weatherData" style="position:absolute; top:5.7vh; left:9vh;"></h4>
+            </div>
+            <style>
+                input{
+                    width: 90%;
+                    height: 35px;
+                    font-size: 15px;
+                    position: relative;
+                    top: 2vh;
+                    left:4%;
+                }
+                div.weather{
+                    position: relative;
+                }
+            </style>
+        </div>
+
+        <div class="main" id="main">
             <!-- 메인파트내용 -->
             {% block content %}
             {% endblock %}
             <!-- 끝 -->
         </div>
 
-        <div class="map_posi">
+        <div class="map_posi" id="map_posi">
             <div id="map"></div>
         </div>
     </div>
 
+    
+    <!-- 자바스크립트 시작 -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
-        let markers= new Array();
-        const markers_x= [];
-        let markers_y= new Array();
-        let markers_name= new Array();
-        var position_test=[];
+
         var db = "{{restaurant_db}}";
         var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
         var test_data=locations
@@ -53,60 +81,33 @@
         for(i in test_data){
             console.log(test_data[i])
         }
-        var map = new naver.maps.Map('map', {
-            zoom: 17
-        });
         $.ajax({
             url:"{% url 'getdata'%}",
             dataType: "json",
             success: function (data) {
+                var apiTest = "";
                 console.log(data)
                 for (var i = 0; i < data.length; i++) {
-                    markers_x.push(data[i].fields.x)
-                    markers_y.push(data[i].fields.y)
-                    markers_name.push(data[i].fields.name)
-                    console.log(data[i].fields.x,data[i].fields.y,data[i].fields.name)
-                    position_test.push({
-                        title:data[i].fields.name,
-                        latlng: new naver.maps.LatLng(data[i].fields.x,data[i].fields.y)
-                    })
-                }
-
-                for (var i=0; i<2;i++){
-                    console.log(position_test[i].latlng,markers_y[i],markers_name[i])
-
-
-                    var marker=new naver.maps.Marker({
-                        position: new naver.maps.LatLng(markers_x[i],markers_y[i]),
-                        map: map,
-                        title:position_test[i].title
-                    });
+                    apiTest += "<tr>"
+                    apiTest += "<td>" + data[i].fields.x + "</td>"
+                    apiTest += "<td>" + data[i].fields.y + "</td>"
+                    apiTest += "<td>" + data[i].fields.name + "</td>"
+                    apiTest += "</tr>"
                 }
             },
             error: function (request, status, error) {
                 console.log('실패');
             }
         });
-        console.log(markers_x,markers_y)
-        console.log(position_test)
-        for (var i=0; i<2;i++){
-            console.log(markers_x[i],markers_y[i],markers_name[i])
-
-
-            var marker=new naver.maps.Marker({
-                position: new naver.maps.LatLng(markers_x[i], markers_y[i]),
-                map: map,
-                title:markers_name[i]
-            });
-        }
     </script>
-    <!-- 자바스크립트 시작 -->
+    <script type="text/javascript">
+
 
     </script>
 
     <script src="{% static 'basic.js' %}"></script>
-    <!-- {% block script %} -->
-    <!-- {% endblock %} -->
+    {% block script %}
+    {% endblock %}
     <!-- 자바스크립트 끝 -->
 </body>
 <table class="json" style="padding:10px">

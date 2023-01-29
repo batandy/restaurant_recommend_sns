@@ -16,5 +16,10 @@
         </div>
         <button type="submit" class="btn btn-primary">로그인</button>
     </form>
+    <li>
+        {% if not user.is_authenticated %}
+        <a class="nav-link" href="{% url 'main:signup' %}">회원가입</a>
+        {% endif %}
+    </li>
 </div>
 {% endblock %}

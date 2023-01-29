@@ -73,6 +73,9 @@ input[id=trigger]:checked + label span:nth-child(3) {
 input[id=trigger]:checked ~ .main {
     left: -25%;
 }
+input[id=trigger]:checked ~ .top_space {
+    left: -25%;
+}
 input[id=trigger]:checked + label span {
     left: -21vw;
 }
