@@ -79,6 +79,8 @@
         let markers_name= new Array();
         var position_test=[];
         var db = "{{restaurant_db}}";
+        let lat=0;
+        let lng=0;
         var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
         var test_data=locations
         console.log(locations,test_data)
@@ -86,8 +88,20 @@
             console.log(test_data[i])
         }
 
-        var map = new naver.maps.Map('map', {
+        function onGeoSuccess(position){
+            lat = position.coords.latitude;
+            lng = position.coords.longitude;
+            console.log("You live it", lat, lng);
+        }
+        function onGeoError(){
+            alert("Can't find you. No locate for you.")
+        }
+        navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
+
+
+        var map = new naver.maps.Map('map', {
+            //center: new naver.maps.LatLng(lat, lng),
             zoom: 17
         });
         $.ajax({
@@ -108,8 +122,6 @@
 
                 for (var i=0; i<2;i++){
                     console.log(position_test[i].latlng,markers_y[i],markers_name[i])
-
-
                     var marker=new naver.maps.Marker({
                         position: new naver.maps.LatLng(markers_x[i],markers_y[i]),
                         map: map,
@@ -123,16 +135,7 @@
         });
         console.log(markers_x,markers_y)
         console.log(position_test)
-        for (var i=0; i<2;i++){
-            console.log(markers_x[i],markers_y[i],markers_name[i])
 
-
-            var marker=new naver.maps.Marker({
-                position: new naver.maps.LatLng(markers_x[i], markers_y[i]),
-                map: map,
-                title:markers_name[i]
-            });
-        }
     </script>
     <script type="text/javascript">
 
