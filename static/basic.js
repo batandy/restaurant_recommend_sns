@@ -5,14 +5,14 @@ function onGeoSuccess(position){
     console.log("You live it", lat, lng);
 
     var mapDiv = document.getElementById('map');
-    var map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(lat, lng),
-        zoom: 17
-    });
-    var marker1 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(lat, lng),
-        map: map
-    });
+//    var map = new naver.maps.Map('map', {
+//        center: new naver.maps.LatLng(lat, lng),
+//        zoom: 17
+//    });
+//    var marker1 = new naver.maps.Marker({
+//        position: new naver.maps.LatLng(lat, lng),
+//        map: map
+//    });
 
 }
 function onGeoError(){
