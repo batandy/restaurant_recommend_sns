@@ -45,3 +45,6 @@ def signup(request):
     else:
         form = UserForm()
     return render(request, 'main/signup.html', {'form': form})
+    
+def sns(request):
+    return render(request,"sns.html")
