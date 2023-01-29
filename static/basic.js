@@ -30,10 +30,7 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
 //        center: new naver.maps.LatLng(lat, lng),
 //        zoom: 17
 //    });
-//    var marker1 = new naver.maps.Marker({
-//        position: new naver.maps.LatLng(lat, lng),
-//        map: map
-//    });
+
 }
 
 function onGeoSuccess(position){
