@@ -26,14 +26,14 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
         });
     });
     var mapDiv = document.getElementById('map');  //네이버 지도
-    var map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(lat, lng),
-        zoom: 17
-    });
-    var marker1 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(lat, lng),
-        map: map
-    });
+//    var map = new naver.maps.Map('map', {
+//        center: new naver.maps.LatLng(lat, lng),
+//        zoom: 17
+//    });
+//    var marker1 = new naver.maps.Marker({
+//        position: new naver.maps.LatLng(lat, lng),
+//        map: map
+//    });
 }
 
 function onGeoSuccess(position){
