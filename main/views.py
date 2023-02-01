@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from . import models
 from .models import restaurants
+from sns.models import Post
 from django.core import serializers
 from django.contrib.auth import authenticate, login
 from main.forms import UserForm
@@ -47,4 +48,11 @@ def signup(request):
     return render(request, 'main/signup.html', {'form': form})
     
 def sns(request):
-    return render(request,"sns.html")
+    post_list=Post.objects.order_by('-create_date')
+    context={'post_list':post_list}
+    return render(request,"sns.html",context)
+    
+def detail(request,post_id):
+    post=Post.objects.get(id=post_id)
+    context={'post':post}
+    return render(request,'post_detail.html',context)
