@@ -15,6 +15,7 @@
         <div class="icons">
             {% if user.is_authenticated %}
             <a class = "login-link" href="{%url 'main:logout' %}">logout</a>
+            <a class = "my-page" href="{%url 'main:mypage' %}">내정보</a>
             {% else %}
             <a class = "login-link" href="{%url 'main:login' %}">login</a>
             {% endif %}
