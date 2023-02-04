@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . import models
 from .models import restaurants
-from sns.models import Post
+from sns.models import Post, Comment
+from .forms import CommentForm
+from django.utils import timezone
 from django.core import serializers
 from django.contrib.auth import authenticate, login
 from main.forms import UserForm
@@ -56,3 +58,9 @@ def detail(request,post_id):
     post=Post.objects.get(id=post_id)
     context={'post':post}
     return render(request,'post_detail.html',context)
+
+def sns_comment(request,post_id):
+    post=get_object_or_404(Post,pk=post_id)
+    comment=Comment(post=post, content=request.POST.get('content'),create_date=timezone.now())
+    comment.save()
+    return redirect('main:detail',post_id=post.id)

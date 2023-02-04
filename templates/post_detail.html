@@ -2,8 +2,24 @@
 
 {% block content %}
 
-<h1>{{post.subject}}</h1>
-<div>
-  {{post.content}}
-</div>
+<!--게시글(POST)-->
+<h1 id='p_sub'>제목 : {{post.subject}}</h1>
+<h3 id='p_con'>{{post.content}}</h3>
+<h5 id='p_date'>작성일 : {{post.create_date}}</h5>
+
+<!--댓글(COMMENT)-->
+<form action="{%url 'main:detail' post.id%}" method="post">
+  {% csrf_token %}
+  <p>댓글</p>
+  {{comment_form}}
+  {%for comment in post_detail.comment_set.all%}
+    <p>{{comment}}</p>
+    <p>{{comment.create_date}}</p>
+    <hr>
+  {%endfor%}
+  <!--근데 textarea에서 쓴 댓글이 input에 연결되는 걸 어케 하지?-->
+  <textarea name='content' id='content' row='15'></textarea>
+  <!--여기서 input에 href로 sns/comment/<int:post_id>/ 연결하면 되지 않을까?-->
+  <input type="submit" value="댓글 등록">
+</form>
 {% endblock %}
