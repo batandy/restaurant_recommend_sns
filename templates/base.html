@@ -130,7 +130,7 @@
                             markers_name.push(data[i].fields.name)
                             console.log(data[i].fields.x,data[i].fields.y,data[i].fields.name)
                         }
-                        for (var i=0; i<2;i++){
+                        for (var i=0; i<data.length;i++){
                             console.log(markers_y[i],markers_name[i])
                             var marker=new naver.maps.Marker({
                                 position: new naver.maps.LatLng(markers_x[i],markers_y[i]),
