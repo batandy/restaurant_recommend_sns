@@ -1,5 +1,7 @@
 from django.db import models
 
+#post랑 comment에 로그인 한 사용자 정보가 들어가야 함
+#post에 위치정보도 있어야 될 것 같은데? (위치 마다 동네 게시글이 다르니까)
 class Post(models.Model):
   subject=models.CharField(max_length=200)
   content=models.TextField()

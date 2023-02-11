@@ -17,6 +17,7 @@
         <div class="icons">
             {% if user.is_authenticated %}
             <a class = "login-link" href="{%url 'main:logout' %}">logout</a>
+            <a class = "my-page" href="{%url 'main:mypage' %}">내정보</a>
             {% else %}
             <a class = "login-link" href="{%url 'main:login' %}">login</a>
             {% endif %}
@@ -40,9 +41,9 @@
             
             <div id="weather" style="left:4%;position:relative;">
                 <h3 id="weatherLocate" style="position:relative; top:1vh;"></h3>
-                <button id="locateModify" style="position:absolute; top:3.1vh; left:33vh;">위치수정</button>
-                <img id="weatherIcon" style="position:relative; top:-3vh; left:-2.2vh;">
-                <h4 id="weatherData" style="position:absolute; top:5.7vh; left:9vh;"></h4>
+                <button id="locateModify" style="position:absolute; top:3.1vh; left:16vw;">위치수정</button>
+                <img id="weatherIcon" style="position:relative; top:-3vh; left:-1vw;">
+                <h4 id="weatherData" style="position:absolute; top:5.7vh; left:4vw;"></h4>
             </div>
             <style>
                 input{
@@ -76,6 +77,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
         let markers= new Array();
+        let infowindows= new Array();
         const markers_x= [];
         let markers_y= new Array();
         let markers_name= new Array();
@@ -86,10 +88,8 @@
         var position_test=0;
         var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
         var test_data=locations
-        console.log(locations,test_data)
-        for(i in test_data){
-            console.log(test_data[i])
-        }
+
+
 
         function onGeoSuccess(position){
             lat = position.coords.latitude;
@@ -103,6 +103,7 @@
                 position: new naver.maps.LatLng(lat, lng),
                 map: map
             });
+
             $.ajax({
                 url:"{% url 'getdata'%}",
                 dataType: "json",
@@ -112,16 +113,40 @@
                         markers_x.push(data[i].fields.x)
                         markers_y.push(data[i].fields.y)
                         markers_name.push(data[i].fields.name)
-                        console.log(data[i].fields.x,data[i].fields.y,data[i].fields.name)
                     }
 
-                    for (var i=0; i<2;i++){
-                        console.log(markers_y[i],markers_name[i])
-                        var marker=new naver.maps.Marker({
-                            position: new naver.maps.LatLng(markers_x[i],markers_y[i]),
-                            map: map,
-                            title:markers_name[i]
-                        });
+                    for (var i=0; i<data.length;i++){
+                        if(lat-0.05<=markers_x[i]&&markers_x[i]<=lat+0.050 && lng-0.050 <= markers_y[i] && markers_y[i] <= lng+0.050){
+                            console.log(markers_y[i],markers_name[i])
+                            var marker=new naver.maps.Marker({
+                                position: new naver.maps.LatLng(markers_x[i],markers_y[i]),
+                                map: map,
+                                title:markers_name[i]
+                            });
+                            var infowindow=new naver.maps.InfoWindow({
+                                content:'<div style="width:200sp;text-align:center;padding:10px;"><b>'+markers_name[i]+'</b><br>-네이버 지도-</div>'
+                            });
+                            markers.push(marker);
+                            infowindows.push(infowindow);
+                        }
+                    }
+
+                    function getClickHandler(seq) {
+                        console.log("test")
+                        return function(e) {  // 마커를 클릭하는 부분
+                            var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
+                                infoWindow = infowindows[seq]; // 클릭한 마커의 시퀀스로 찾는다
+                            console.log(marker,infoWindow)
+                            if (infoWindow.getMap()) {
+                                infoWindow.close();
+                            } else {
+                                infoWindow.open(map, marker); // 표출
+                            }
+                        }
+                    }
+                    for (var i=0, ii=markers.length; i<ii; i++) {
+                        console.log(markers[i] , getClickHandler(i));
+                        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
                     }
                 },
                 error: function (request, status, error) {
@@ -132,21 +157,16 @@
         function onGeoError(){
             alert("Can't find you. No locate for you.")
         }
+
         navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
 
 
-<!--        var map = new naver.maps.Map('map', {-->
-<!--            zoom: 17-->
-<!--        });-->
-
         console.log(markers_x,markers_y)
         console.log(position_test)
 
-    </script>
+    </script><!-- 현재위치, db연결해서 데이터 가져오기 -->
     <script type="text/javascript">
-
-
     </script>
 
     <script src="{% static 'basic.js' %}"></script>
@@ -154,23 +174,6 @@
     {% endblock %}
     <!-- 자바스크립트 끝 -->
 </body>
-<table class="json" style="padding:10px">
-    <tr>
-        <th>name</th>
-        <th>x</th>
-        <th>y</th>
-        <th>ratenum</th>
-        <th>ratetext</th>
-    </tr>
-    {% for restaurant in restaurant_db%}
-        <tr>
-            <td>{{restaurant.name}}</td>
-            <td>{{restaurant.x}}</td>
-            <td>{{restaurant.y}}</td>
-            <td>{{restaurant.ratenum}}</td>
-            <td>{{restaurant.ratetext}}</td>
-        </tr>
-    {% endfor %}
-</table>
+
 
 </html>

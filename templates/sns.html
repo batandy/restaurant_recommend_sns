@@ -8,13 +8,19 @@
     {%if post_list%}
       {%for post in post_list%}
       <!--문제가 발생한다면 href 경로를 생각해보자-->
-        {{forloop.counter}}. <a href="{{post.id}}">{{post.subject}}</a>
+        <a href="{{post.id}}">{{forloop.counter}}. {{post.subject}}</a>
       {%endfor%}
     {%else%}
       <p>게시글이 없습니다.</p>
     {%endif%}
+    <!--게시글 쓰기 버튼 추가 하자-->
+    <!--이거는 html 새로 만들어서 post_detail처럼 main 안에서 게시글 만들 수 있게 하기-->
+    <!--url매핑은 input에 onClick 링크를 달아서 하기-->
+    <input type="submit" class='btn btn--post' value="게시글 등록" onClick='main:post_create'>
   </div>
   <!--게시글 쓰기 버튼 추가 하자-->
+  <!--근데 textarea에서 쓴 댓글이 input에 연결되는 걸 어케 하지?-->
+  <!--여기서 input에 href로 sns/comment/<int:post_id>/ 연결하면 되지 않을까?-->
 </div>
 
 {% endblock %}
