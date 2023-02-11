@@ -6,12 +6,10 @@
   <!--게시글 (post) 부분-->
   <div class="post">
     {%if post_list%}
-      <ul>
       {%for post in post_list%}
       <!--문제가 발생한다면 href 경로를 생각해보자-->
-        <li><a href="{{post.id}}">{{post.subject}}</a><li>
+        {{forloop.counter}}. <a href="{{post.id}}">{{post.subject}}</a>
       {%endfor%}
-      </ul>
     {%else%}
       <p>게시글이 없습니다.</p>
     {%endif%}
