@@ -64,3 +64,9 @@ def sns_comment(request,post_id):
     comment=Comment(post=post, content=request.POST.get('content'),create_date=timezone.now())
     comment.save()
     return redirect('main:detail',post_id=post.id)
+
+def sns_post(request):
+    return render(request,'post_create.html')
+
+def mypage(request):
+    return render(request,"main/mypage.html")

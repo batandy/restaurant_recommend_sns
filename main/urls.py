@@ -15,4 +15,6 @@ urlpatterns = [
     path('sns/',views.sns,name='sns'),
     path('sns/<int:post_id>/',views.detail,name='detail'),
     path('sns/comment/<int:post_id>/',views.sns_comment,name='comment_create'),
+    path('sns/post',views.sns_post,name='post_create'),
+    path('mypage/', views.mypage, name='mypage'),
 ]
