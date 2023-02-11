@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'sns.apps.SnsConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

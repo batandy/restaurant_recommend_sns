@@ -14,4 +14,4 @@ class UserForm(UserCreationForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model=Comment
-        fields=['name', 'content']
+        fields=['content']
