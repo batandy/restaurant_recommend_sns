@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="sns_sidebar">
+  <!--게시글 (post) 부분-->
+  <div class="post">
+    {%if post_list%}
+      {%for post in post_list%}
+      <!--문제가 발생한다면 href 경로를 생각해보자-->
+        {{forloop.counter}}. <a href="{{post.id}}">{{post.subject}}</a>
+      {%endfor%}
+    {%else%}
+      <p>게시글이 없습니다.</p>
+    {%endif%}
+  </div>
+  <!--게시글 쓰기 버튼 추가 하자-->
+</div>
+
+{% endblock %}

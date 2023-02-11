@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'sns.apps.SnsConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
