@@ -56,10 +56,14 @@ div.main{
     top: 18vh;
     left: 3%;
     transition: 0.3s;
-    padding: 0;
+    padding: 10px;
     margin: 0;
     box-sizing: border-box;
     height: 82vh;
     overflow: auto;
     background-color: #ffffff;
 };
+
+div.sns_sidebar{
+    overflow-y:scroll;
+}
