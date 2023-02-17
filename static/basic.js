@@ -13,9 +13,6 @@ var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
 var test_data=locations
 const API_KEY = "7ab08d887f92df7bd79920dcb019c6a2"; //날씨 api키
 console.log(locations,test_data)
-for(i in test_data){
-    console.log(test_data[i])
-}
 
 function getLocate(lat, lng){  //위치정보와 날씨 가져오기
     naver.maps.Service.reverseGeocode({
@@ -80,21 +77,7 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                 }
             }
 
-            function getClickHandler(seq) {
-                return function(e) {  // 마커를 클릭하는 부분
-                    var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
-                        infoWindow = infowindows[seq]; // 클릭한 마커의 시퀀스로 찾는다
-                    if (infoWindow.getMap()) {
-                        infoWindow.close();
-                    } else {
-                        infoWindow.open(map, marker); // 표출
 
-                    } 
-                }
-            }
-            for (var i=0, ii=markers.length; i<ii; i++) {
-                naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
-            }
         },
         error: function (request, status, error) {
             console.log('실패');
