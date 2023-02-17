@@ -12,6 +12,7 @@ import json
 from django.http import HttpResponse
 
 
+
 def index(request):
     search_text=request.GET.get('search_res')
     context={'search_text':search_text}
