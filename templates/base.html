@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'floating.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'sns.css' %}">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="{% static 'basic.js' %}"></script>
     
 </head>
 <body>
@@ -21,7 +23,9 @@
             {% else %}
             <a class = "login-link" href="{%url 'main:login' %}">login</a>
             {% endif %}
-            <p><button class="sns_botton" type="button" onclick="location.href='{%url 'main:sns'%}'">sns</button></p>
+            <p>
+                <button class="sns_button" type="button" onclick="location.href='{% url 'main:sns' %}';">sns</button>
+            </p>
         </div>
 
         <!-- 햄버거 메뉴 -->
@@ -39,11 +43,11 @@
                 <input name="search_res" type="text" placeholder="장소, 가게명 검색" required">
             </form>
             
-            <div id="weather" style="left:4%;position:relative;">
-                <h3 id="weatherLocate" style="position:relative; top:1vh;"></h3>
-                <button id="locateModify" style="position:absolute; top:3.1vh; left:16vw;">위치수정</button>
-                <img id="weatherIcon" style="position:relative; top:-3vh; left:-1vw;">
-                <h4 id="weatherData" style="position:absolute; top:5.7vh; left:4vw;"></h4>
+            <div id="weather" style="left:4%;">
+                <h3 id="weatherLocate" style="position:absolute;top:6vh;left:1vw;"></h3>
+                <button id="locateModify" style="position:absolute;left:17vw;top:8vh;">위치수정</button>
+                <img id="weatherIcon" style="position:absolute;top:8vh;">
+                <h4 id="weatherData" style="position:absolute;top:10vh;left:5vw;"></h4>
             </div>
             <style>
                 input{
@@ -53,9 +57,6 @@
                     position: relative;
                     top: 2vh;
                     left:4%;
-                }
-                div.weather{
-                    position: relative;
                 }
             </style>
         </div>
@@ -74,102 +75,16 @@
 
     
     <!-- 자바스크립트 시작 -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+        
     <script type="text/javascript">
-        let markers= new Array();
-        let infowindows= new Array();
-        const markers_x= [];
-        let markers_y= new Array();
-        let markers_name= new Array();
-        var position_test=[];
-        var db = "{{restaurant_db}}";
-        let lat=0;
-        let lng=0;
-        var position_test=0;
-        var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
-        var test_data=locations
-
-
-
-        function onGeoSuccess(position){
-            lat = position.coords.latitude;
-            lng = position.coords.longitude;
-            console.log("You live it", lat, lng);
-            var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(lat,lng),
-            zoom: 17
-            });
-            var marker1 = new naver.maps.Marker({
-                position: new naver.maps.LatLng(lat, lng),
-                map: map
-            });
-
-            $.ajax({
-                url:"{% url 'getdata'%}",
-                dataType: "json",
-                success: function (data) {
-                    console.log(data)
-                    for (var i = 0; i < data.length; i++) {
-                        markers_x.push(data[i].fields.x)
-                        markers_y.push(data[i].fields.y)
-                        markers_name.push(data[i].fields.name)
-                    }
-
-                    for (var i=0; i<data.length;i++){
-                        if(lat-0.05<=markers_x[i]&&markers_x[i]<=lat+0.050 && lng-0.050 <= markers_y[i] && markers_y[i] <= lng+0.050){
-                            console.log(markers_y[i],markers_name[i])
-                            var marker=new naver.maps.Marker({
-                                position: new naver.maps.LatLng(markers_x[i],markers_y[i]),
-                                map: map,
-                                title:markers_name[i]
-                            });
-                            var infowindow=new naver.maps.InfoWindow({
-                                content:'<div style="width:200sp;text-align:center;padding:10px;"><b>'+markers_name[i]+'</b><br>-네이버 지도-</div>'
-                            });
-                            markers.push(marker);
-                            infowindows.push(infowindow);
-                        }
-                    }
-
-                    function getClickHandler(seq) {
-                        console.log("test")
-                        return function(e) {  // 마커를 클릭하는 부분
-                            var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
-                                infoWindow = infowindows[seq]; // 클릭한 마커의 시퀀스로 찾는다
-                            console.log(marker,infoWindow)
-                            if (infoWindow.getMap()) {
-                                infoWindow.close();
-                            } else {
-                                infoWindow.open(map, marker); // 표출
-                            }
-                        }
-                    }
-                    for (var i=0, ii=markers.length; i<ii; i++) {
-                        console.log(markers[i] , getClickHandler(i));
-                        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
-                    }
-                },
-                error: function (request, status, error) {
-                    console.log('실패');
-                }
-            });
-        }
-        function onGeoError(){
-            alert("Can't find you. No locate for you.")
-        }
-
-        navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
-
-
-
-        console.log(markers_x,markers_y)
-        console.log(position_test)
-
+        
     </script><!-- 현재위치, db연결해서 데이터 가져오기 -->
     <script type="text/javascript">
     </script>
 
-    <script src="{% static 'basic.js' %}"></script>
+
     {% block script %}
     {% endblock %}
     <!-- 자바스크립트 끝 -->
