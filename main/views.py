@@ -66,15 +66,20 @@ def sns_comment(request,post_id): # 댓글 작성
         if comment_form.is_valid():
             comment=comment_form.save(commit=False)
             comment.post=post
+            comment.user=request.user
             comment.create_date=timezone.now()
             comment.save()
         return redirect('main:detail',post_id=post.id)
+
+# def comment_delete(request,post_id,comment_id): # 댓글 삭제
+
 
 def sns_post(request): # 게시글 작성
     if request.method=='POST':
         form=PostForm(request.POST)
         if form.is_valid():
             post=form.save(commit=False)
+            post.user=request.user
             post.create_date=timezone.now()
             post.save()
             return redirect('main:sns')
