@@ -18,8 +18,11 @@
 <form action="{%url 'main:comment_create' post.id%}" method="post">
   {% csrf_token %}
   <!--근데 textarea에서 쓴 댓글이 input에 연결되는 걸 어케 하지?-->
-  <textarea name='content' class='content' rows='5'></textarea>
+  <div class="mb-3">
+    <label for="content" class="form-label">댓글 달기</label>
+    <textarea class="form-control" name="content" id="comment_content" rows="10">{{form.content.value|default_if_none:''}}</textarea>
+  </div>
   <!--여기서 input에 href로 sns/comment/<int:post_id>/ 연결하면 되지 않을까?-->
-  <input type="submit" class='btn btn--comment' value="댓글 등록">
+  <button type="submit" class="btn btn-primary">댓글 등록</button>
 </form>
 {% endblock %}
