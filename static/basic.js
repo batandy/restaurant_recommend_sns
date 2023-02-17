@@ -3,6 +3,7 @@ let infowindows= new Array();
 const markers_x= [];
 let markers_y= new Array();
 let markers_name= new Array();
+let datas=new Array();
 var position_test=[];
 var db = "{{restaurant_db}}";
 let lat=0;
@@ -61,7 +62,6 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
 
             for (var i=0; i<data.length;i++){
                 if(lat-0.05<=markers_x[i]&&markers_x[i]<=lat+0.050 && lng-0.050 <= markers_y[i] && markers_y[i] <= lng+0.050){
-                    console.log(markers_y[i],markers_name[i])
                     var marker=new naver.maps.Marker({
                         position: new naver.maps.LatLng(markers_x[i],markers_y[i]),
                         map: map,
@@ -70,26 +70,29 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                     var infowindow=new naver.maps.InfoWindow({
                         content:'<div style="width:200px;height:200px;text-align:center;padding:10px;"><b>'+markers_name[i]+'</b><br>-네이버 지도-</div>'
                     });
+                    var datatest = {
+                        name: markers_name[i],
+                        latlng: marker.getPosition().toString()
+                    };
+                    datas.push(datatest)
                     markers.push(marker);
                     infowindows.push(infowindow);
                 }
             }
 
             function getClickHandler(seq) {
-                console.log("test")
                 return function(e) {  // 마커를 클릭하는 부분
                     var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
                         infoWindow = infowindows[seq]; // 클릭한 마커의 시퀀스로 찾는다
-                    console.log(marker,infoWindow)
                     if (infoWindow.getMap()) {
                         infoWindow.close();
                     } else {
                         infoWindow.open(map, marker); // 표출
+
                     } 
                 }
             }
             for (var i=0, ii=markers.length; i<ii; i++) {
-                console.log(markers[i] , getClickHandler(i));
                 naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
             }
         },
@@ -141,47 +144,3 @@ console.log(position_test)
 //export default markers;  //이거 들가니까 왜 오류..? 이거 해결해봐
 
 
-
-
-
-//
-//const mysql = require('sns');
-//
-//var db = mysql.createConnection({
-//  host : 'localhost',
-//  user : 'root',
-//  password : '1234',
-//  database : 'sns'
-//});
-//
-//db.connect();
-
-//var sql = 'SELECT * FROM topic';
-//db.query(sql,(err,rows,fields)=>{
-//    if(err){
-//        console.log(err);
-//    }else{
-//        console.log('rows',rows);
-//    }
-//})
-//db.end();
-//var restaurant_db = "{{restaurant_db}}";
-//var try1=JSON.parse(restaurant_db);
-//console.log("test",restaurant_db);
-//
-//var mapDiv = document.getElementById('map');
-//var map = new naver.maps.Map('map', {
-//    center: new naver.maps.LatLng(37.3595704, 127.105399),
-//    zoom: 10
-//});
-//var marker = new naver.maps.Marker({
-//    position: new naver.maps.LatLng(37.50604909629275,127.00322896918819),
-//    map: map
-//});
-//var Markers=[]
-//for (a in restaurant_db){
-//    Markers.push(new naver.maps.Marker({
-//            map: map,
-//            position: new naver.maps.LatLng(parseFloat(a.x), parseFloat(a.y))
-//    }));
-//}
