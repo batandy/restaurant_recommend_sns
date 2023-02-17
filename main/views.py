@@ -73,7 +73,6 @@ def sns_comment(request,post_id): # 댓글 작성
 
 # def comment_delete(request,post_id,comment_id): # 댓글 삭제
 
-
 def sns_post(request): # 게시글 작성
     if request.method=='POST':
         form=PostForm(request.POST)
