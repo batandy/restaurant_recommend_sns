@@ -53,7 +53,7 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
         url: "/getdata/",
         dataType: "json",
         success: function (data) {
-            console.log(data)
+            // console.log(data)
             for (var i = 0; i < data.length; i++) {
                 markers_x.push(data[i].fields.x)
                 markers_y.push(data[i].fields.y)
