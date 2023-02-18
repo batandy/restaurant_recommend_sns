@@ -3,7 +3,7 @@ let infowindows= new Array();
 const markers_x= [];
 let markers_y= new Array();
 let markers_name= new Array();
-let datas=new Array();
+const datas=[];
 var position_test=[];
 var db = "{{restaurant_db}}";
 let lat=0;
@@ -12,7 +12,23 @@ var position_test=0;
 var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
 var test_data=locations
 const API_KEY = "7ab08d887f92df7bd79920dcb019c6a2"; //날씨 api키
-console.log(locations,test_data)
+
+const fetchData = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "/getdata/",
+            dataType: "json",
+            success: function (result) {
+            resolve(result);
+        },
+        error: function (error) {
+            reject(error);
+        },
+    });
+    });
+};
+
+export default fetchData;
 
 function getLocate(lat, lng){  //위치정보와 날씨 가져오기
     naver.maps.Service.reverseGeocode({
@@ -67,11 +83,13 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                     var infowindow=new naver.maps.InfoWindow({
                         content:'<div style="width:200px;height:200px;text-align:center;padding:10px;"><b>'+markers_name[i]+'</b><br>-네이버 지도-</div>'
                     });
-                    var datatest = {
+                    const dataset = {
                         name: markers_name[i],
-                        latlng: marker.getPosition().toString()
+                        lat: markers_x[i],
+                        lng: markers_y[i],
+                        // latlng: marker.getPosition().toString()
                     };
-                    datas.push(datatest)
+                    datas.push(dataset);
                     markers.push(marker);
                     infowindows.push(infowindow);
                 }
@@ -121,9 +139,4 @@ document.getElementById("locateModify").addEventListener("click", function(){  /
         getLocate(lat,lng);
     });
 });
-
-console.log(markers_x,markers_y)
-console.log(position_test)
-//export default markers;  //이거 들가니까 왜 오류..? 이거 해결해봐
-
 
