@@ -13,12 +13,12 @@ var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
 var test_data=locations
 const API_KEY = "7ab08d887f92df7bd79920dcb019c6a2"; //날씨 api키
 
-const fetchData = () => {      //main.js로 mysql data넘기기
+const fetchData = () => {
     return new Promise((resolve, reject) => {
-    $.ajax({
-        url: "/getdata/",
-        dataType: "json",
-        success: function (result) {
+        $.ajax({
+            url: "/getdata/",
+            dataType: "json",
+            success: function (result) {
             resolve(result);
         },
         error: function (error) {
@@ -94,7 +94,7 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                     infowindows.push(infowindow);
                 }
             }
-            
+
             function getClickHandler(seq) {
                 return function(e) {  // 마커를 클릭하는 부분
                     var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
@@ -103,6 +103,7 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                         infoWindow.close();
                     } else {
                         infoWindow.open(map, marker); // 표출
+
                     } 
                 }
             }
@@ -153,6 +154,3 @@ document.getElementById("locateModify").addEventListener("click", function(){  /
     });
 });
 
-// console.log(markers_x,markers_y)
-// console.log(position_test)
-export {datas};  //이거 들가니까 왜 오류..? 이거 해결해봐
