@@ -2,7 +2,6 @@
 import fetchData from "./basic.js";
 
 const productsContainer = document.getElementById('divstores');
-console.log(productsContainer)
 // const location = JSON.parse(sessionStorage.getItem("location"));
 const data_name=[]
 const data_x=[]
@@ -17,9 +16,11 @@ fetchData().then((result) => {  //basic.js로 넘어온 데이터 가공 후 띄
         data_x.push(result[i].fields.x)
         data_y.push(result[i].fields.y)
         data_name.push(result[i].fields.name)
-        data_add.push(result[i].market_address)
-        data_num.push(result[i].market_number)
+        data_add.push(result[i].fields.market_address)
+        data_num.push(result[i].fields.market_number)
     }
+
+
 
     let lat;
     let lng;
@@ -38,8 +39,8 @@ fetchData().then((result) => {  //basic.js로 넘어온 데이터 가공 후 띄
         if(lat-0.05<=data_x[i]&&data_x[i]<=lat+0.050 && lng-0.050 <= data_y[i] && data_y[i] <= lng+0.050){
             const dataset = {
                 name: data_name[i],
-                lat: data_x[i],
-                lng: data_y[i],
+                address: data_add[i],
+                number: data_num[i],
             };
             datas.push(dataset);
         }
@@ -47,13 +48,18 @@ fetchData().then((result) => {  //basic.js로 넘어온 데이터 가공 후 띄
     
     for (let i = 0; i < datas.length; i++) {        //띄우기
         const data = datas[i];  // i번째 객체
+
         const name = document.createElement('h3');
         name.textContent = data.name;
         productsContainer.appendChild(name);
 
-        const latlng = document.createElement('p');
-        latlng.textContent = `${data.lat}, ${data.lng}`;
-        productsContainer.appendChild(latlng);
+        const locate = document.createElement('p');
+        locate.textContent = data.address;
+        productsContainer.appendChild(locate);
+
+        const number = document.createElement('p');
+        number.textContent = data.number;
+        productsContainer.appendChild(number);
 
         const blank = document.createElement('br')
         productsContainer.appendChild(blank);
