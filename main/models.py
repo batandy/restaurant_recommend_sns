@@ -2,15 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class restaurants(models.Model):
+class restaurantsdb(models.Model):
     name = models.CharField(max_length=200)
     x = models.FloatField()
     y = models.FloatField()
-    ratenum = models.FloatField()
-    ratetext = models.TextField()
+    market_address = models.TextField()
+    detail_address = models.TextField()
+    food_category = models.TextField()
+    market_number = models.CharField(max_length=200)
 
     class Meta:
-        db_table = 'restaurants'
+        db_table = 'restaurants_data'
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -18,4 +20,5 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
 

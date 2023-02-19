@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . import models
-from .models import restaurants
+from .models import restaurantsdb
 from sns.models import Post, Comment
 from .forms import PostForm,CommentForm
 from django.utils import timezone
@@ -16,7 +16,7 @@ from django.http import HttpResponse
 def index(request):
     search_text=request.GET.get('search_res')
     context={'search_text':search_text}
-    restaurant_db = serializers.serialize("json", restaurants.objects.all())
+    restaurant_db = serializers.serialize("json", restaurantsdb.objects.all())
     return render(request,"main.html", context)
     return render(request,"base.html",{'restaurant_db':restaurant_db})
 
@@ -27,11 +27,11 @@ def store(request):
     
 
 def restaurant_view(request):
-    restaurant_form = restaurants.objects.all()
+    restaurant_form = restaurantsdb.objects.all()
     return render(request, 'storeinfo.html',{'restaurants':restaurant_form})
 
 def getdata(request):
-    restaurant_db = serializers.serialize("json", restaurants.objects.all())
+    restaurant_db = serializers.serialize("json", restaurantsdb.objects.all())
     return HttpResponse(restaurant_db,content_type="text/json-comment-filtered")
 
 def signup(request):

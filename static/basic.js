@@ -92,6 +92,7 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                     datas.push(dataset);
                     markers.push(marker);
                     infowindows.push(infowindow);
+
                 }
             }
 
