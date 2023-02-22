@@ -21,8 +21,6 @@ def index(request):
     return render(request,"main.html", context)
     return render(request,"base.html",{'restaurant_db':restaurant_db})
 
-
-
 def store(request):
     return render(request,"main/storeinfo.html")
     
