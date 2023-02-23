@@ -14,13 +14,14 @@
       <label for="subject" class="form-label">제목</label>
       <input type="text" class="form-control" name="subject" id="post_subject" value="{{form.subject.value|default_if_none:''}}">
     </div>
-    <hr>
-    <div class="mb-3">
-      <label for="content" class="form-label">내용</label>
-      <textarea class="form-control" name="content" id="post_content" rows="10">{{form.content.value|default_if_none:''}}</textarea>
-    </div>
+    <p>
+      <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea class="form-control" name="content" id="post_content" rows="10">{{form.content.value|default_if_none:''}}</textarea>
+      </div>
+    </p>
     <button type="submit" class="btn btn-post">올리기</button>
-    <button type="button" class="sns_button" onclick="location.href='{% url 'main:sns' %}'">뒤로 가기</button>
+    <button type="button" class="btn btn-post" onclick="location.href='{% url 'main:sns' %}'">뒤로 가기</button>
   </form>
 </div>
 
