@@ -1,0 +1,598 @@
+[33mcommit 011dacb49a5a557e0d94a6d5a5a24e23444c998a[m[33m ([m[1;36mHEAD -> [m[1;32msns_back[m[33m, [m[1;31morigin/sns_back[m[33m, [m[1;32msns7[m[33m, [m[1;32mmain[m[33m)[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Wed Feb 22 15:15:29 2023 +0900
+
+    sns8
+
+[33mcommit 2bb03d735eec227473e207404691f892ef785741[m
+Merge: 8c888cb 7f3434c
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 18:48:35 2023 +0900
+
+    Merge remote-tracking branch 'origin/main' into sns7
+
+[33mcommit 8c888cbe748dec7a96444109c6597fe8b6bc0ba1[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 18:48:23 2023 +0900
+
+    map1
+
+[33mcommit 7f3434c52327f384e5bce18bbaba5caba4ce3788[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Feb 17 18:21:48 2023 +0900
+
+    1
+
+[33mcommit ca9e88dcb2c805b29763064bb6050c4b74fabf31[m
+Merge: 6c52cfc ee83c5b
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 18:04:49 2023 +0900
+
+    Merge remote-tracking branch 'origin/main' into sns7
+
+[33mcommit 6c52cfc9911b1b1705f2e14f4270066849aac203[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 18:03:31 2023 +0900
+
+    sns8
+
+[33mcommit ee83c5b70bbe22618dea79fb232507cfe496b474[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Feb 17 18:00:12 2023 +0900
+
+    test0217
+
+[33mcommit 3956e11728737eb53cdaebb4df83ea5f57385db2[m
+Merge: 6302fcb 2c8cfc8
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Feb 17 16:57:54 2023 +0900
+
+    Merge branch 'dbcheck' into mainproject
+
+[33mcommit 6302fcbb6436cf6715bb52e9173514dd9de7311b[m
+Merge: cf538a8 c483efa
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Feb 17 16:57:44 2023 +0900
+
+    병합
+
+[33mcommit 2c8cfc859284c3ce12f69ef8fc112a4d4af9ee80[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Feb 17 16:55:16 2023 +0900
+
+    basic.js로 mysql 이전
+
+[33mcommit b46006a725326b9c4b0ee803619e5abdd4219ce5[m
+Merge: 4a49263 c483efa
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 16:53:22 2023 +0900
+
+    Merge branch 'main' into sns7
+
+[33mcommit 4a49263fcbd5c234dcf683deb0b68427d9c3c151[m
+Merge: f2e78c0 71ebfaf
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 16:53:17 2023 +0900
+
+    Merge remote-tracking branch 'origin/main' into sns7
+
+[33mcommit c483efa22dc8cd0685cbde9adea5e10ac18b0941[m
+Merge: 71ebfaf f2e78c0
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 16:52:18 2023 +0900
+
+    Merge branch 'sns7'
+
+[33mcommit f2e78c067500bde1ad2d5426fec1b5d07df09152[m[33m ([m[1;32msns6[m[33m)[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 16:51:26 2023 +0900
+
+    sns7
+
+[33mcommit 93666daac838de5decab757a49f7f9ec648d1229[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Feb 17 15:23:09 2023 +0900
+
+    sns5
+
+[33mcommit c36a99d7dd2025b0e4331c226bd8223426c6dc5a[m
+Merge: cf538a8 71ebfaf
+Author: 김민석 <batandy@naver.com>
+Date:   Mon Feb 13 21:34:06 2023 +0900
+
+    merge
+
+[33mcommit cf538a811187c4e563e527aa97dd7975513fa667[m
+Merge: e4230eb 6bbdaac
+Author: 김민석 <batandy@naver.com>
+Date:   Sat Feb 11 21:52:29 2023 +0900
+
+    1
+
+[33mcommit 71ebfafa8d2931d347f9e3bbeb9d9e10ebca76af[m
+Merge: b97cb12 e5ff133
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Sat Feb 11 21:51:55 2023 +0900
+
+    Merge branch 'sns6'
+
+[33mcommit e5ff1338589b2bc46aa4f4239bd0bf93d34308f5[m[33m ([m[1;32msns5[m[33m)[m
+Merge: f8d68b0 6bbdaac
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Sat Feb 11 21:49:42 2023 +0900
+
+    comment2
+
+[33mcommit b97cb120d2108a4eab4300de9b36510013f3e5d8[m
+Merge: 6536dd9 f8d68b0
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Sat Feb 11 20:11:37 2023 +0900
+
+    Merge branch 'sns5'
+
+[33mcommit f8d68b07f35ee81e205a85bbee1011ab495cf2f2[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Sat Feb 11 20:05:30 2023 +0900
+
+    comment2
+
+[33mcommit 6bbdaac8efd6b8d02b94a1c51a061ae62a0812c2[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Sat Feb 11 20:04:34 2023 +0900
+
+    마커연동1.4
+
+[33mcommit df5790342c6c5aaa9fce1c32417ba65186c3de1b[m[33m ([m[1;31morigin/sns5[m[33m)[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Sat Feb 11 18:33:57 2023 +0900
+
+    comment1
+
+[33mcommit e4230ebf51423a1a73627fcd303a1d7991a19c89[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Feb 10 19:58:03 2023 +0900
+
+    정리
+
+[33mcommit 99bd622f936ec084f1cb3bea002b8025568e3216[m[33m ([m[1;32msns4[m[33m, [m[1;32msns3[m[33m)[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Sat Feb 4 17:13:22 2023 +0900
+
+    post3
+
+[33mcommit 24047b11d6708c693dda4d7b957d61855608691c[m
+Merge: 2267b6c c55e8da
+Author: 김민석 <batandy@naver.com>
+Date:   Sat Feb 4 17:11:28 2023 +0900
+
+    Merge commit 'c55e8da223bd79d3d587af33a00a923dcfc81252' into mainproject
+
+[33mcommit c55e8da223bd79d3d587af33a00a923dcfc81252[m
+Author: seungwon <herbysw@naver.com>
+Date:   Sat Feb 4 17:10:31 2023 +0900
+
+    프로필 연동1
+
+[33mcommit 374dd17e98e2e0b4619e04b2e552c9f8346b4160[m[33m ([m[1;31morigin/sns3[m[33m)[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Wed Feb 1 22:14:01 2023 +0900
+
+    post2
+
+[33mcommit 6536dd90d215870dce773a467fea4f78026f02fc[m
+Merge: 52fa8bc 220b888
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Wed Feb 1 21:58:30 2023 +0900
+
+    Merge remote-tracking branch 'origin/sns'
+
+[33mcommit 711ae491c0be71cb6c66be0290d75ae6c7cf7942[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Wed Feb 1 21:33:19 2023 +0900
+
+    post1
+
+[33mcommit d8c1235d4f00de25ad38dbbe5d3f105ec8b5de9c[m
+Merge: 52fa8bc 220b888
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Wed Feb 1 16:05:27 2023 +0900
+
+    Merge remote-tracking branch 'origin/sns' into sns1
+
+[33mcommit 2267b6cbb87b5345bda098368ec53a206f7ee374[m
+Author: 김민석 <batandy@naver.com>
+Date:   Mon Jan 30 13:27:34 2023 +0900
+
+    top_space 비율조정
+
+[33mcommit 220b888616333755b59b67f9c2577e4fc2008b68[m[33m ([m[1;31morigin/sns[m[33m)[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Mon Jan 30 00:20:22 2023 +0900
+
+    first
+
+[33mcommit 52fa8bc84aaed876dc82e7ced07574bbf3d9ab22[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Sun Jan 29 23:45:55 2023 +0900
+
+    마커연동1.3
+
+[33mcommit a697016e3866dbc3541609370f85cc926203623f[m[33m ([m[1;31morigin/main22[m[33m)[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Sun Jan 29 23:32:28 2023 +0900
+
+    마커연동1.2
+
+[33mcommit 2f5d0f234099eb427963fc9ec7882396d92e1b96[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Sun Jan 29 23:24:37 2023 +0900
+
+    마커연동1.1
+
+[33mcommit 1c77323e5fca26eb3991328b7b608803e209a6b2[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Sun Jan 29 23:17:33 2023 +0900
+
+    마커연동1
+
+[33mcommit edbdc9afff8278787837e05e23230dfcc48b13d0[m
+Merge: f146330 687cdb1
+Author: 99apollo <99apollo@naver.com>
+Date:   Sun Jan 29 23:09:24 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       static/basic.js
+    #       templates/base.html
+
+[33mcommit f146330ae88ea00094e8a94048e54fa307827de0[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Sun Jan 29 23:08:47 2023 +0900
+
+    마커연동
+
+[33mcommit 687cdb1adcab511b48c555bbbcc8afc0898b3aa0[m[33m ([m[1;31morigin/main_test2[m[33m)[m
+Author: seungwon <herbysw@naver.com>
+Date:   Sat Jan 28 11:39:09 2023 +0900
+
+    회원가입 추가
+
+[33mcommit 8dcc9ba21c58a5238d4523810508071b16bd3ab1[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 27 17:54:27 2023 +0900
+
+    위치정보를 sessionStorage에 저장하여 로딩속도 개선
+
+[33mcommit 133213b642b88d8e70d0ea633ceaec8480dd07f9[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 27 16:38:59 2023 +0900
+
+    위치 수정기능 추가
+
+[33mcommit a5ade78fcc7e1d0653e724977ac64d97c5f254c3[m
+Author: 김민석 <batandy@naver.com>
+Date:   Thu Jan 26 22:45:27 2023 +0900
+
+    top_space floating 오류수정
+
+[33mcommit d8f327a801603b2f1b5ae0ce2caf148b7fc8e26e[m
+Merge: f7271da abef17e
+Author: 김민석 <batandy@naver.com>
+Date:   Thu Jan 26 22:32:34 2023 +0900
+
+    머지 충돌 해결
+
+[33mcommit f7271dae0b98961d8716f725d15ee7daaaff8472[m
+Author: 김민석 <batandy@naver.com>
+Date:   Thu Jan 26 22:25:27 2023 +0900
+
+    상단 검색창과 메인페이지 분할 및 날씨와 위치추가
+
+[33mcommit abef17e5d99965d235882da2cea4746fccc9c91b[m
+Merge: 050778d 147a7f8
+Author: 99apollo <99apollo@naver.com>
+Date:   Wed Jan 25 19:37:23 2023 +0900
+
+    db 확인
+
+[33mcommit 050778dd95ad89ae49d7f8d2803d466cf013bdb0[m
+Merge: ca1d5db e92a14a
+Author: 99apollo <99apollo@naver.com>
+Date:   Wed Jan 25 19:32:14 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 147a7f84fa9bff4bd76447e94189d219845b9ad5[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Wed Jan 25 19:31:32 2023 +0900
+
+    데이터 변경3
+
+[33mcommit e92a14a64a1bf3cebf4689a4f70626a4b96c8a60[m[33m ([m[1;31morigin/main_test1[m[33m)[m
+Author: seungwon <herbysw@naver.com>
+Date:   Wed Jan 25 18:57:44 2023 +0900
+
+    로그인 기능 수정1
+
+[33mcommit 08fff4ded3a24c4d50c3596f719b6ae71b43e30d[m
+Author: seungwon <herbysw@naver.com>
+Date:   Wed Jan 25 02:34:41 2023 +0900
+
+    초기 로그인 기능 구현1
+
+[33mcommit e44f5e911d5870c5f57657e2851af28625622709[m
+Author: 김민석 <batandy@naver.com>
+Date:   Mon Jan 23 19:43:54 2023 +0900
+
+    초기 화면 비율 수정 및 geolocation 기능 추가
+
+[33mcommit 4ce62b82a083f686d65072b89bcf97b17238fe3f[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Jan 20 19:15:22 2023 +0900
+
+    sns 앱 추가
+
+[33mcommit ca1d5dbb382e03c557dfd5416543666d0ec0c3b1[m
+Merge: 7941b5e 0e1959f
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 18:50:49 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 0e1959fa17d5bdff72c86d6aafaf4101422b9316[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 20 18:50:40 2023 +0900
+
+    앱 통일화
+
+[33mcommit 7941b5e93fea535ce2892ada8773ebfeaa4a2f0a[m
+Merge: 115142f e884e53
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 18:49:12 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit e884e53004405e72e089c297be8c4a5a750e5305[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 20 18:47:52 2023 +0900
+
+    앱 통일화
+
+[33mcommit 115142f64d84b73b1dc67e9a5df3eec73314ee92[m
+Merge: 8ab42fa 74b6c11
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 18:24:41 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 74b6c11875b39e6fbe514a258d2cd563e3a44b4e[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 20 18:24:02 2023 +0900
+
+    네이버맵 분리
+
+[33mcommit 8ab42faa1e5ba5af12075fa4c080396de438e63a[m
+Merge: dbf59b1 c0ba090
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 18:21:55 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       templates/base.html
+
+[33mcommit dbf59b17ca7c174701001dd2b978891407402b1b[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 18:21:26 2023 +0900
+
+    데이터 변경2
+
+[33mcommit c0ba090f4418e189db130b29eb8a34b09ef367e2[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 20 18:19:17 2023 +0900
+
+    네이버 맵 분리
+
+[33mcommit 99e89674cdf649cb65f252ce6aeca6f0ecd497f9[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 17:34:14 2023 +0900
+
+    데이터 변경
+
+[33mcommit 6556e247ff51ced60f2892beae7b4d5bfcc6198f[m
+Merge: 734b0fe 3e2742d
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 17:20:31 2023 +0900
+
+    Merge branch 'test3' into teste
+    
+    # Conflicts:
+    #       wbsite/settings.py
+
+[33mcommit 734b0fea1ca749fdcc670c774e50917b689e2063[m
+Merge: 5f95fce 9f1e2f1
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 17:19:31 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 3e2742d2f40a676c9aef7143e1b73f418f8b73c2[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 17:18:56 2023 +0900
+
+    머지 테스트2
+
+[33mcommit 9f1e2f1e589ec9f8dc54cea06d83e87b7888b0c0[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 20 17:18:36 2023 +0900
+
+    settings.py 수정
+
+[33mcommit 7588c375e9f452f2c2c1e348c4b3dbff0a840ed4[m
+Merge: 5f95fce b961996
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 17:09:27 2023 +0900
+
+    머지 테스트
+
+[33mcommit 5f95fcedd3c5a4a01780b7be558a3b6d994f6960[m
+Merge: 331ecc6 269b4bb
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 17:05:33 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit b96199683573b7028a98f53e5a7a150f8dcf6d8f[m[33m ([m[1;31morigin/backuptest2[m[33m)[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 17:03:46 2023 +0900
+
+    세팅 변경
+
+[33mcommit 269b4bb661708172300a23a56053f64fc0830657[m
+Merge: 4eed075 501ace8
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 20 17:02:28 2023 +0900
+
+    mainproject merge(세팅, 데베 연결)
+
+[33mcommit 501ace8bcd4d8012c1b17b07287b731c11d8b504[m[33m ([m[1;31morigin/mainproject[m[33m)[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 20 17:00:19 2023 +0900
+
+    세팅,데베 변경
+
+[33mcommit 4eed075ae0a0952e27d3cdcb99302680f208abd3[m
+Author: 김민석 <batandy@naver.com>
+Date:   Fri Jan 20 16:46:12 2023 +0900
+
+    리드미 테스트
+
+[33mcommit dda803dc6de95f9a7b5eecc7aa546cb3f8ba7244[m
+Author: zzammin <woalsdl7399@naver.com>
+Date:   Fri Jan 20 16:37:11 2023 +0900
+
+    재민:연결 확인
+
+[33mcommit 331ecc6113ad8726230e2cebfef5b0849602a616[m
+Merge: ce76128 d7a692c
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 16:11:48 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 367b379ec5a2c6a7529ef09d08c1f967cb9edbc9[m[33m ([m[1;31morigin/test2[m[33m)[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 16:10:41 2023 +0900
+
+    데이터 기본 세팅 + 저장
+
+[33mcommit 881b96abac0ca6cf1f50956a96379207a070d156[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 20 14:13:41 2023 +0900
+
+    데이터 기본 세팅
+
+[33mcommit d7a692cefbb2c637a770033a9babdea7f4e1137c[m
+Author: 김민석 <batandy@naver.com>
+Date:   Thu Jan 19 01:07:01 2023 +0900
+
+    FRONT: 초기화면 추가 수정
+
+[33mcommit 23c15893c9958c19f571255dc9d2c2a2772d8cc4[m
+Author: 김민석 <batandy@naver.com>
+Date:   Tue Jan 17 22:48:45 2023 +0900
+
+    fix gitignore
+
+[33mcommit a17d60284653419277295a8fcf9c34ab21b62eff[m
+Merge: d613e7c 9493dc9
+Author: 김민석 <batandy@naver.com>
+Date:   Tue Jan 17 22:36:54 2023 +0900
+
+    Merge branch 'mainproject'
+
+[33mcommit d613e7c95dc00a93ce9869a6b3df42701234895b[m
+Author: 김민석 <batandy@naver.com>
+Date:   Tue Jan 17 22:32:16 2023 +0900
+
+    초기화면 여백제거
+
+[33mcommit 9493dc926986072113002abd38dc38ab75d28efd[m
+Author: 김민석 <batandy@naver.com>
+Date:   Tue Jan 17 22:17:21 2023 +0900
+
+    FRONT:초기화면 여백 제거
+
+[33mcommit ce761285270fa5f9f9cf7409b574dcb6a4cea63b[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Tue Jan 17 19:02:59 2023 +0900
+
+    연동확인
+
+[33mcommit 5a1ee6156775a28b3b05ddf8fe0148a34cb168f7[m
+Merge: 7c5b48c 9a60f6c
+Author: 99apollo <99apollo@naver.com>
+Date:   Tue Jan 17 18:36:02 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 9a60f6c2daeea4e8d8632c0de4606eaca013b346[m
+Author: 김민석 <batandy@naver.com>
+Date:   Tue Jan 17 18:13:41 2023 +0900
+
+    초기화면 세팅 및 파일정리
+
+[33mcommit 7c5b48c7cf95de8a9fffdded03bc00687a217f11[m
+Merge: 331071b f25dd1e
+Author: 99apollo <99apollo@naver.com>
+Date:   Mon Jan 16 18:26:09 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit f25dd1e864c23030ee251dccba892828250e8617[m
+Author: 김민석 <batandy@naver.com>
+Date:   Mon Jan 16 18:25:06 2023 +0900
+
+    수정본
+
+[33mcommit 331071b690813e437531cb2c3651a87c2145dd1a[m
+Merge: 2043d9f 96628df
+Author: 99apollo <99apollo@naver.com>
+Date:   Mon Jan 16 18:22:21 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 96628df14e5f49e23ca3e15a5c9309dcdca07fc8[m
+Author: 김민석 <batandy@naver.com>
+Date:   Mon Jan 16 18:17:20 2023 +0900
+
+    템플릿 추가
+
+[33mcommit e15829e8731c4919f72f3239113197e29d77b27d[m
+Author: 김민석 <batandy@naver.com>
+Date:   Mon Jan 16 18:14:53 2023 +0900
+
+    파트 분리
+
+[33mcommit 4b4eff9df77a1c274c0841db52bff49f6abeff3f[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 6 18:43:13 2023 +0900
+
+    로그아웃버튼
+
+[33mcommit 2043d9f3f420fadb0ee76a4aa33e8c903e2fc8f6[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 6 18:39:03 2023 +0900
+
+    Revert "DB 웹이미지 화 확인"
+    
+    This reverts commit 32139ea5a555bffb9173ce082c6b431496ec8501.
+
+[33mcommit d3ce03b99b47dc843a51b4f3b9f908c51d390ac9[m
+Author: 99apollo <99apollo@naver.com>
+Date:   Fri Jan 6 18:39:03 2023 +0900
+
+    Revert "DB 웹이미지 확인2"
+    
+    This reverts commit f93b3fb5c0a88eb23c4ca686c7cddaa686a2c0f3.
