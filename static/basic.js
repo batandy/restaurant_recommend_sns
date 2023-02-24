@@ -21,6 +21,8 @@ const data_add=[]
 const data_num=[]
 const fetch_datas=[]
 const data_cat=[]
+const user_lat=[]
+const user_lng=[]
 
 const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
     return new Promise((resolve, reject) => {
@@ -74,6 +76,7 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
 };
 
 export default fetchData;
+
 
 function getLocate(lat, lng){  //위치정보와 날씨 가져오기
     naver.maps.Service.reverseGeocode({
@@ -131,7 +134,9 @@ function onGeoSuccess(position){
     lat = position.coords.latitude;
     lng = position.coords.longitude;
     sessionStorage.setItem("location", JSON.stringify({ lat, lng }));
-    getLocate(lat,lng); 
+    user_lat.push(lat);
+    user_lng.push(lng);
+    getLocate(lat,lng);
 }
 function onGeoError(){
     alert("Can't find you. No locate for you.")
