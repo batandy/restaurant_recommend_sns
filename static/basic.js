@@ -58,7 +58,8 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                             address: data_add[i],
                             number: data_num[i],
                             lat: data_x[i],
-                            lng: data_y[i]
+                            lng: data_y[i],
+                            cat: data_cat[i]
                         };
                         fetch_datas.push(dataset);
                     }
