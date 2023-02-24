@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block content %}
 <!--게시글 작성 html-->
 <!--제목-->
+<hi id="my-lat">0</hi>
+<h1 id="my-lng">0</h1>
+<script type="module" src="{% static 'sns_post.js' %}"></script>
 <div class="create_post">
   <h3>게시글 작성</h3>
   <form action="{%url 'main:post_create'%}" method='post'>
