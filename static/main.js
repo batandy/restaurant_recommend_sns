@@ -10,7 +10,7 @@ fetchData().then((fetch_datas) => {  //basic.js로 넘어온 데이터 가공 �
 
         const name = document.createElement('a');
         name.id=`name${i}`;
-        name.setAttribute('href', `main/store_detail?nameid=${i}`)
+        name.setAttribute('href', `store_detail?nameid=${i}`)
         name.textContent = data.name;
         productsContainer.appendChild(name);
 

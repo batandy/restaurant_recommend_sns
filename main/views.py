@@ -10,7 +10,6 @@ from main.forms import UserForm
 import json
 # Create your views here.
 from django.http import HttpResponse
-from django.template import loader
 
 
 
