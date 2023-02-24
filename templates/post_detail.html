@@ -28,5 +28,6 @@
   </div>
   <!--여기서 input에 href로 sns/comment/<int:post_id>/ 연결하면 되지 않을까?-->
   <button type="submit" class="btn btn-primary">댓글 등록</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='{% url 'main:sns' %}'">뒤로 가기</button>
 </form>
 {% endblock %}
