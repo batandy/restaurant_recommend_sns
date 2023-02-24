@@ -13,13 +13,57 @@ var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
 var test_data=locations
 const API_KEY = "7ab08d887f92df7bd79920dcb019c6a2"; //날씨 api키
 
-const fetchData = () => {
+//for fetchData
+const data_name=[]
+const data_x=[]
+const data_y=[]
+const data_add=[]
+const data_num=[]
+const fetch_datas=[]
+const data_cat=[]
+
+const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
     return new Promise((resolve, reject) => {
         $.ajax({
             url: "/getdata/",
             dataType: "json",
             success: function (result) {
-            resolve(result);
+                console.log(result[1])
+                for (var i = 0; i < result.length; i++) {
+                    data_x.push(result[i].fields.x)
+                    data_y.push(result[i].fields.y)
+                    data_name.push(result[i].fields.name)
+                    data_add.push(result[i].fields.market_address)
+                    data_num.push(result[i].fields.market_number)
+                    data_cat.push(result[i].fields.food_category)
+                }
+            
+                let lat;
+                let lng;
+                if(sessionStorage.getItem("location")){                                 //위치확인
+                    const location = JSON.parse(sessionStorage.getItem("location"));
+                    lat=location.lat;
+                    lng=location.lng
+                }else{
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        lat = position.coords.latitude;
+                        lng = position.coords.longitude;
+                    });
+                }
+            
+                for (var i=0; i<result.length;i++){                    //현재 위치기준으로 매장선별
+                    if(lat-0.05<=data_x[i]&&data_x[i]<=lat+0.050 && lng-0.050 <= data_y[i] && data_y[i] <= lng+0.050){
+                        const dataset = {
+                            name: data_name[i],
+                            address: data_add[i],
+                            number: data_num[i],
+                            lat: data_x[i],
+                            lng: data_y[i]
+                        };
+                        fetch_datas.push(dataset);
+                    }
+                }
+                resolve(fetch_datas);
         },
         error: function (error) {
             reject(error);
@@ -62,48 +106,24 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
             position: new naver.maps.LatLng(lat, lng),
             map: map
         });
-        $.ajax({
-        url: "/getdata/",
-        dataType: "json",
-        success: function (data) {
-            // console.log(data)
-            for (var i = 0; i < data.length; i++) {
-                markers_x.push(data[i].fields.x)
-                markers_y.push(data[i].fields.y)
-                markers_name.push(data[i].fields.name)
+        fetchData().then((fetch_datas) => { 
+            for (var i=0; i<fetch_datas.length;i++){
+                const data = fetch_datas[i];
+                var marker=new naver.maps.Marker({
+                    position: new naver.maps.LatLng(data.lat,data.lng),
+                    map: map,
+                    title:data.name
+                });
+                var infowindow=new naver.maps.InfoWindow({
+                    content:'<div style="width:200px;height:200px;text-align:center;padding:10px;"><b>'+markers_name[i]+'</b><br>-네이버 지도-</div>'
+                });
+                // markers.push(marker);
+                infowindows.push(infowindow);
             }
-
-            for (var i=0; i<data.length;i++){
-                if(lat-0.05<=markers_x[i]&&markers_x[i]<=lat+0.050 && lng-0.050 <= markers_y[i] && markers_y[i] <= lng+0.050){
-                    var marker=new naver.maps.Marker({
-                        position: new naver.maps.LatLng(markers_x[i],markers_y[i]),
-                        map: map,
-                        title:markers_name[i]
-                    });
-                    var infowindow=new naver.maps.InfoWindow({
-                        content:'<div style="width:200px;height:200px;text-align:center;padding:10px;"><b>'+markers_name[i]+'</b><br>-네이버 지도-</div>'
-                    });
-                    const dataset = {
-                        name: markers_name[i],
-                        lat: markers_x[i],
-                        lng: markers_y[i],
-                        // latlng: marker.getPosition().toString()
-                    };
-                    datas.push(dataset);
-                    markers.push(marker);
-                    infowindows.push(infowindow);
-
-                }
-            }
-
-
-        },
-        error: function (request, status, error) {
-            console.log('실패');
-        }
+        }).catch((error) => {
+        console.log(error);
     });
-    });
-}
+})};
 
 
 function onGeoSuccess(position){

@@ -10,6 +10,7 @@ from main.forms import UserForm
 import json
 # Create your views here.
 from django.http import HttpResponse
+from django.template import loader
 
 
 
@@ -87,3 +88,9 @@ def sns_post(request): # 게시글 작성
 
 def mypage(request):
     return render(request,"main/mypage.html")
+
+def store_detail(request):
+    nameid=request.GET.get('nameid')
+    context={'nameid':nameid}
+    # return HttpResponse(template.render(request))
+    return render(request, "store_detail_info.html", context)
