@@ -28,7 +28,6 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
             url: "/getdata/",
             dataType: "json",
             success: function (result) {
-                console.log(result[1])
                 for (var i = 0; i < result.length; i++) {
                     data_x.push(result[i].fields.x)
                     data_y.push(result[i].fields.y)
