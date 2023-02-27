@@ -13,6 +13,10 @@ var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
 var test_data=locations
 const API_KEY = "7ab08d887f92df7bd79920dcb019c6a2"; //날씨 api키
 
+var map = new naver.maps.Map('map', {
+            zoom: 17
+            });
+
 //for fetchData
 const data_name=[]
 const data_x=[]
@@ -23,7 +27,7 @@ const fetch_datas=[]
 const data_cat=[]
 const user_lat=[]
 const user_lng=[]
-
+let count=0;
 const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -61,11 +65,15 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                             number: data_num[i],
                             lat: data_x[i],
                             lng: data_y[i],
-                            cat: data_cat[i]
+                            cat: data_cat[i],
+                            id: count,
+                            map: map,
                         };
+                        count+=1;
                         fetch_datas.push(dataset);
                     }
                 }
+                count=0;
                 resolve(fetch_datas);
         },
         error: function (error) {
@@ -102,10 +110,8 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                 weatherSpan.innerHTML = `온도: ${temp}&#176;C 날씨:${weathers.main}`;
                 weatherIcon.src = `https://openweathermap.org/img/wn/${weathers.icon}@2x.png`;
         });
-        var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(lat,lng),
-            zoom: 17
-            });
+        var center_temp=new naver.maps.LatLng(lat,lng);
+        map.setCenter(center_temp);
         var marker1 = new naver.maps.Marker({
             position: new naver.maps.LatLng(lat, lng),
             map: map
@@ -121,8 +127,28 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                 var infowindow=new naver.maps.InfoWindow({
                     content:'<div style="width:200px;height:200px;text-align:center;padding:10px;"><b>'+markers_name[i]+'</b><br>-네이버 지도-</div>'
                 });
-                // markers.push(marker);
+                markers.push(marker);
                 infowindows.push(infowindow);
+
+
+            }
+            for (var i=0;i<fetch_datas.length;i++){
+                const data = fetch_datas[i];
+                naver.maps.Event.addListener(markers[i], 'click', function() {
+                      let baseUrl = window.location.href.includes("main/") ? "" : "main/";
+                      let baseUrl2 = window.location.href.includes("store_detail/") ? "" : "store_detail/";
+                      var temp = i;
+                      var marker_temp=markers[i];
+                      var title = data.name;
+                      var lat = data.lat;
+                      var lng = data.lng;
+                      var id_temp=data.id;
+                      var center_temp=new naver.maps.LatLng(lat,lng);
+                      map.setCenter(center_temp);
+                      console.log(title,lat,lng,id_temp)
+                      // 추출한 정보를 다른 자바스크립트로 전달하는 코드
+                      window.location.href = `${baseUrl}${baseUrl2}?nameid=${id_temp}`;
+                });
             }
         }).catch((error) => {
         console.log(error);
