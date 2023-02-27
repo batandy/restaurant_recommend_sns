@@ -71,3 +71,8 @@ div.sns_sidebar{
 div.divstores{
     overflow: auto;
 }
+
+a:visited{
+    color: blue;
+    text-decoration: none;
+}

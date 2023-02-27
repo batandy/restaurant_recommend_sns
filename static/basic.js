@@ -21,8 +21,7 @@ const data_add=[]
 const data_num=[]
 const fetch_datas=[]
 const data_cat=[]
-const user_lat=[]
-const user_lng=[]
+
 
 const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
     return new Promise((resolve, reject) => {
@@ -51,7 +50,6 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                         lng = position.coords.longitude;
                     });
                 }
-            
                 for (var i=0; i<result.length;i++){                    //현재 위치기준으로 매장선별
                     if(lat-0.05<=data_x[i]&&data_x[i]<=lat+0.050 && lng-0.050 <= data_y[i] && data_y[i] <= lng+0.050){
                         const dataset = {
@@ -65,6 +63,21 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                         fetch_datas.push(dataset);
                     }
                 }
+
+                // 내 위치에서 해당 위치까지의 거리를 계산하는 함수
+                function distance(lats, lngs) {
+                    const R = 6371; // 지구의 반지름(단위: km)
+                    const dLat = (lats - lat) * Math.PI / 180;
+                    const dLng = (lngs - lng) * Math.PI / 180;
+                    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                            Math.cos(lat * Math.PI / 180) * Math.cos(lats * Math.PI / 180) *
+                            Math.sin(dLng/2) * Math.sin(dLng/2);
+                    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                    const d = R * c;
+                    return d;
+                }
+
+                fetch_datas.sort((a, b) => distance(a.lat, a.lng) - distance(b.lat, b.lng)); //거리순으로 정렬
                 resolve(fetch_datas);
         },
         error: function (error) {
@@ -107,7 +120,8 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
             });
         var marker1 = new naver.maps.Marker({
             position: new naver.maps.LatLng(lat, lng),
-            map: map
+            map: map,
+            title:'현재 위치'
         });
         fetchData().then((fetch_datas) => { 
             for (var i=0; i<fetch_datas.length;i++){
@@ -133,8 +147,6 @@ function onGeoSuccess(position){
     lat = position.coords.latitude;
     lng = position.coords.longitude;
     sessionStorage.setItem("location", JSON.stringify({ lat, lng }));
-    user_lat.push(lat);
-    user_lng.push(lng);
     getLocate(lat,lng);
 }
 function onGeoError(){
@@ -146,23 +158,4 @@ if(sessionStorage.getItem("location")){
 }else{
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
-
-document.getElementById("locateModify").addEventListener("click", function(){  //지역수정
-    var modifyAddress = prompt("현재 접속 중인 지역이 아니면 지역을 입력해주세요.");
-    naver.maps.Service.geocode({
-        address: modifyAddress
-    }, function(status, response) {
-        if (status !== naver.maps.Service.Status.OK) {
-            return alert('Something wrong!!!!');
-        }
-        var result = response.result, // 검색 결과의 컨테이너
-            items = result.items; // 검색 결과의 배열
-        if(items[0] === undefined)
-            return alert("주소를 잘못 입력하셨습니다. 다시 입력해주세요");
-        const lng = parseFloat(items[0].point.x);
-        const lat = parseFloat(items[0].point.y);
-        sessionStorage.setItem("location", JSON.stringify({ lat, lng }));
-        getLocate(lat,lng);
-    });
-});
 

@@ -1,5 +1,4 @@
 import fetchData from "./basic.js";
-
 const productsContainer = document.getElementById('store_detail');
 
 fetchData().then((fetch_datas) => {  //basic.js로 넘어온 데이터 가공 후 띄우기  
@@ -25,7 +24,12 @@ fetchData().then((fetch_datas) => {  //basic.js로 넘어온 데이터 가공 �
 
     const blank = document.createElement('br')
     productsContainer.appendChild(blank);
-    
+
+    var map = window.map;
+    console.log(map)
+    // var loc = new naver.maps.LatLng(data.lat, data.lng);
+    map.setCenter(new naver.maps.LatLng(data.lat, data.lng));
 }).catch((error) => {
     console.log(error);
 });
+
