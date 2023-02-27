@@ -23,7 +23,7 @@ const data_x=[]
 const data_y=[]
 const data_add=[]
 const data_num=[]
-const fetch_datas=[]
+let fetch_datas=[]
 const data_cat=[]
 const user_lat=[]
 const user_lng=[]
@@ -55,6 +55,7 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                         lng = position.coords.longitude;
                     });
                 }
+                fetch_datas=[];
                 for (var i=0; i<result.length;i++){                    //현재 위치기준으로 매장선별
                     if(lat-0.05<=data_x[i]&&data_x[i]<=lat+0.050 && lng-0.050 <= data_y[i] && data_y[i] <= lng+0.050){
                         const dataset = {
@@ -66,12 +67,14 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                             cat: data_cat[i],
                             id: count,
                             map: map,
+
                         };
-                        count+=1;
+                        console.log(dataset.name);
+                        console.log(dataset.id);
                         fetch_datas.push(dataset);
                     }
                 }
-                count=0;
+
 
                 // 내 위치에서 해당 위치까지의 거리를 계산하는 함수
                 function distance(lats, lngs) {
@@ -87,6 +90,12 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                 }
 
                 fetch_datas.sort((a, b) => distance(a.lat, a.lng) - distance(b.lat, b.lng)); //거리순으로 정렬
+                for (var i=0; i<fetch_datas.length;i++){                    //현재 위치기준으로 매장선별
+                    fetch_datas[i].id=count;
+                    console.log(fetch_datas[i].name,fetch_datas[i].id);
+                    count+=1;
+                }
+                count =0;
                 resolve(fetch_datas);
         },
         error: function (error) {

@@ -13,9 +13,9 @@ fetchData().then((fetch_datas) => {  //basic.js로 넘어온 데이터 가공 �
             let baseUrl = window.location.href.includes("main/") ? "" : "main/";
 
             const name = document.createElement('h2');
-            name.id=`name${i}`;
+            name.id=`name${data.id}`;
             name.onclick = function(){
-                location.href=`${baseUrl}store_detail?nameid=${i}`;
+                location.href=`${baseUrl}store_detail?nameid=${data.id}`;
             };
             name.textContent = data.name;
             productsContainer.appendChild(name);
@@ -35,8 +35,8 @@ fetchData().then((fetch_datas) => {  //basic.js로 넘어온 데이터 가공 �
                 let baseUrl = window.location.href.includes("main/") ? "" : "main/";
 
                 const name = document.createElement('a');
-                name.id=`name${i}`;
-                name.href = `${baseUrl}store_detail?nameid=${i}`;
+                name.id=`name${data.id}`;
+                name.href = `${baseUrl}store_detail?nameid=${data.id}`;
                 name.textContent = data.name;
                 productsContainer.appendChild(name);
 
