@@ -11,11 +11,11 @@ fetchData().then((fetch_datas) => {  //basic.js로 넘어온 데이터 가공 �
         for (let i = 0; i < fetch_datas.length; i++) {        //띄우기
             const data = fetch_datas[i];  // i번째 객체
             let baseUrl = window.location.href.includes("main/") ? "" : "main/";
-
+            let baseUrl2 = window.location.href.includes("store_detail/") ? "" : "store_detail/";
             const name = document.createElement('h2');
-            name.id=`name${i}`;
+            name.id=`name${data.id}`;
             name.onclick = function(){
-                location.href=`${baseUrl}store_detail?nameid=${i}`;
+                location.href=`${baseUrl}${baseUrl2}?nameid=${data.id}`;
             };
             name.textContent = data.name;
             productsContainer.appendChild(name);
@@ -33,10 +33,10 @@ fetchData().then((fetch_datas) => {  //basic.js로 넘어온 데이터 가공 �
             if(data.name.indexOf(kw)!=-1){
                   // i번째 객체
                 let baseUrl = window.location.href.includes("main/") ? "" : "main/";
-
+                let baseUrl2 = window.location.href.includes("store_detail/") ? "" : "store_detail/";
                 const name = document.createElement('a');
-                name.id=`name${i}`;
-                name.href = `${baseUrl}store_detail?nameid=${i}`;
+                name.id=`name${data.id}`;
+                name.href = `${baseUrl}${baseUrl2}?nameid=${data.id}`;
                 name.textContent = data.name;
                 productsContainer.appendChild(name);
 

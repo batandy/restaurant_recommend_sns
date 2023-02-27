@@ -25,7 +25,7 @@ const data_x=[]
 const data_y=[]
 const data_add=[]
 const data_num=[]
-const fetch_datas=[]
+let fetch_datas=[]
 const data_cat=[]
 const user_lat=[]
 const user_lng=[]
@@ -57,6 +57,7 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                         lng = position.coords.longitude;
                     });
                 }
+                fetch_datas=[];
                 for (var i=0; i<result.length;i++){                    //현재 위치기준으로 매장선별
                     if(lat-0.05<=data_x[i]&&data_x[i]<=lat+0.050 && lng-0.050 <= data_y[i] && data_y[i] <= lng+0.050){
                         const dataset = {
@@ -69,11 +70,9 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                             id: count,
                             map: map,
                         };
-                        count+=1;
                         fetch_datas.push(dataset);
                     }
                 }
-                count=0;
 
                 // 내 위치에서 해당 위치까지의 거리를 계산하는 함수
                 function distance(lats, lngs) {
@@ -89,6 +88,11 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                 }
 
                 fetch_datas.sort((a, b) => distance(a.lat, a.lng) - distance(b.lat, b.lng)); //거리순으로 정렬
+                for(var i=0; i<fetch_datas.length;i++){
+                    fetch_datas[i].id=count;
+                    count+=1;
+                }
+                count=0;
                 resolve(fetch_datas);
         },
         error: function (error) {
@@ -151,19 +155,17 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
             for (var i=0;i<fetch_datas.length;i++){
                 const data = fetch_datas[i];
                 naver.maps.Event.addListener(markers[i], 'click', function() {
-                      let baseUrl = window.location.href.includes("main/") ? "" : "main/";
-                      let baseUrl2 = window.location.href.includes("store_detail/") ? "" : "store_detail/";
-                      var temp = i;
-                      var marker_temp=markers[i];
-                      var title = data.name;
-                      var lat = data.lat;
-                      var lng = data.lng;
-                      var id_temp=data.id;
-                      var center_temp=new naver.maps.LatLng(lat,lng);
-                      map.setCenter(center_temp);
-                      console.log(title,lat,lng,id_temp)
-                      // 추출한 정보를 다른 자바스크립트로 전달하는 코드
-                      window.location.href = `${baseUrl}${baseUrl2}?nameid=${id_temp}`;
+                    let baseUrl = window.location.href.includes("main/") ? "" : "main/";
+                    let baseUrl2 = window.location.href.includes("store_detail/") ? "" : "store_detail/";
+                    var title = data.name;
+                    var lat = data.lat;
+                    var lng = data.lng;
+                    var id_temp=data.id;
+                    var center_temp=new naver.maps.LatLng(lat,lng);
+                    map.setCenter(center_temp);
+                    console.log(title,lat,lng,id_temp)
+                    // 추출한 정보를 다른 자바스크립트로 전달하는 코드
+                    window.location.href = `${baseUrl}${baseUrl2}?nameid=${id_temp}`;
                 });
             }
         }).catch((error) => {
