@@ -26,6 +26,7 @@ const data_y=[]
 const data_add=[]
 const data_num=[]
 let fetch_datas=[]
+let fetch_datas=[]
 const data_cat=[]
 const user_lat=[]
 const user_lng=[]
@@ -58,6 +59,7 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                     });
                 }
                 fetch_datas=[];
+                fetch_datas=[];
                 for (var i=0; i<result.length;i++){                    //현재 위치기준으로 매장선별
                     if(lat-0.05<=data_x[i]&&data_x[i]<=lat+0.050 && lng-0.050 <= data_y[i] && data_y[i] <= lng+0.050){
                         const dataset = {
@@ -69,6 +71,7 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                             cat: data_cat[i],
                             id: count,
                             map: map,
+
                         };
                         fetch_datas.push(dataset);
                     }

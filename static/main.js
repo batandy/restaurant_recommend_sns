@@ -14,6 +14,7 @@ fetchData().then((fetch_datas) => {  //basic.js로 넘어온 데이터 가공 �
             let baseUrl2 = window.location.href.includes("store_detail/") ? "" : "store_detail/";
             const name = document.createElement('h2');
             name.id=`name${data.id}`;
+            name.id=`name${data.id}`;
             name.onclick = function(){
                 location.href=`${baseUrl}${baseUrl2}?nameid=${data.id}`;
             };
