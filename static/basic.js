@@ -13,6 +13,8 @@ var locations = "{{restaurant_db}}".replace(/&quot;/g, '"');
 var test_data=locations
 const API_KEY = "7ab08d887f92df7bd79920dcb019c6a2"; //날씨 api키
 
+
+
 //for fetchData
 const data_name=[]
 const data_x=[]
@@ -159,3 +161,6 @@ if(sessionStorage.getItem("location")){
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
 
+fetchData().then((fetch_datas) => { 
+    
+});
