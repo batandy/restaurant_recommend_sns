@@ -54,16 +54,16 @@ label[for=trigger] span:nth-child(3) {
 }
 
 /* check시 변하는 label[for=trigger] > span의 n번째 요소  */
-input[id=trigger]:checked + label span:nth-child(1) {
+input[id=trigger]:not(:checked) + label span:nth-child(1) {
     top: 50%;
     transform: rotate(45deg);
 }
 
-input[id=trigger]:checked + label span:nth-child(2) {
+input[id=trigger]:not(:checked) + label span:nth-child(2) {
     opacity: 0;
 }
 
-input[id=trigger]:checked + label span:nth-child(3) {
+input[id=trigger]:not(:checked) + label span:nth-child(3) {
     top: 50%;
     transform: rotate(-45deg);
 }

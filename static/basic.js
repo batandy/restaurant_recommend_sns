@@ -14,11 +14,6 @@ var test_data=locations
 const API_KEY = "7ab08d887f92df7bd79920dcb019c6a2"; //날씨 api키
 
 
-
-var map = new naver.maps.Map('map', {
-            zoom: 17
-            });
-
 //for fetchData
 const data_name=[]
 const data_x=[]
@@ -26,11 +21,12 @@ const data_y=[]
 const data_add=[]
 const data_num=[]
 let fetch_datas=[]
-let fetch_datas=[]
 const data_cat=[]
 const user_lat=[]
 const user_lng=[]
 let count=0;
+
+
 const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -70,8 +66,6 @@ const fetchData = () => {    //데이터 가공 해서 fetch_datas로 넘기기
                             lng: data_y[i],
                             cat: data_cat[i],
                             id: count,
-                            map: map,
-
                         };
                         fetch_datas.push(dataset);
                     }
@@ -133,7 +127,10 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                 weatherIcon.src = `https://openweathermap.org/img/wn/${weathers.icon}@2x.png`;
         });
         var center_temp=new naver.maps.LatLng(lat,lng);
-        map.setCenter(center_temp);
+        var map = new naver.maps.Map('map', {
+            zoom: 17,
+            center: center_temp
+        });
         var marker1 = new naver.maps.Marker({
             position: new naver.maps.LatLng(lat, lng),
             map: map,
@@ -152,8 +149,6 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                 });
                 markers.push(marker);
                 infowindows.push(infowindow);
-
-
             }
             for (var i=0;i<fetch_datas.length;i++){
                 const data = fetch_datas[i];
@@ -170,6 +165,13 @@ function getLocate(lat, lng){  //위치정보와 날씨 가져오기
                     // 추출한 정보를 다른 자바스크립트로 전달하는 코드
                     window.location.href = `${baseUrl}${baseUrl2}?nameid=${id_temp}`;
                 });
+            }
+            const params = new URLSearchParams(location.search);
+            const id = params.get('nameid');
+            if(id!==null){
+                const data = fetch_datas[id];  // i번째 객체
+                var center_temp=new naver.maps.LatLng(data.lat,data.lng);
+                map.setCenter(center_temp);
             }
         }).catch((error) => {
         console.log(error);
@@ -195,6 +197,3 @@ if(sessionStorage.getItem("location")){
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 }
 
-fetchData().then((fetch_datas) => { 
-    
-});
