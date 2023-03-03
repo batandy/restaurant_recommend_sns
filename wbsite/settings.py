@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'main',
     'sns.apps.SnsConfig',
     'django_extensions',
+    'friend',
 ]
 
 

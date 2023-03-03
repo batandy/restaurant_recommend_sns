@@ -24,6 +24,7 @@ urlpatterns = [
     path('', main.views.index, name='index'),
     path('main/', include('main.urls')),
     path('getdata/', main.views.getdata, name='getdata'),
+    path('friend/',include('friend.urls')),
 ]
 
 if settings.DEBUG:

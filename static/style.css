@@ -76,3 +76,9 @@ a:visited{
     color: blue;
     text-decoration: none;
 }
+
+div.space {
+  width: 4px;
+  height: auto;
+  display: inline-block;
+}
